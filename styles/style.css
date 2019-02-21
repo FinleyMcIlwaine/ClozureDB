@@ -1,0 +1,36 @@
+/*
+Color pallete (increasing brightness):
+5c4d4d
+915b4a
+a96851
+f2f1e7
+*/
+html,body{
+  font-family: 'Roboto Slab', serif;
+  color: #f2f1e7;
+  min-width: 260px;
+  background-color: #f2f1e7;
+}
+#main{
+  margin: 10px auto;
+  padding: 10px;
+  border: 0px solid;
+  border-radius: 5px;
+  background: #5c4d4d
+}
+#title{
+  margin: 0;
+  text-shadow: 1px 1px 5px black;
+}
+#input-form{
+  margin: auto;
+  margin-top: 20px;
+  max-width: 60%;
+  color: #5c4d4d;
+  background-color: #a96851;
+  padding: 20px;
+  border: 0px solid;
+  border-color: #f2f1e7;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px black;
+}
