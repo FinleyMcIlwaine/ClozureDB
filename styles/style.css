@@ -9,8 +9,13 @@ html,body{
   font-family: 'Roboto Slab', serif;
   color: #f2f1e7;
   min-width: 260px;
-  background-color: #f2f1e7;
+  background-color: #39404E;
   margin: 0px;
+}
+#title{
+  margin: 0;
+  text-shadow: 2px 2px 5px black;
+  text-align: left;
 }
 .nav-link{
   font-family: 'Roboto Slab', serif;
@@ -43,25 +48,19 @@ html,body{
 #home-link{
   margin-left: 20%;
 }
-#main{
-  margin: auto;
-  padding: 10px;
-  background: #5c4d4d
-}
-#title{
-  margin: 0;
-  text-shadow: 2px 2px 5px black;
-  text-align: left;
-}
 #input-form{
   margin: auto;
-  margin-top: 20px;
-  max-width: 45%;
-  color: #5c4d4d;
-  background-color: #a96851;
+  max-width: 60%;
+  color: #2C2828;
+  background-color: #EEE9E1;
   padding: 20px;
-  border: 0px solid;
-  border-color: #f2f1e7;
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px black;
+  box-shadow: 3px 3px 10px black;
+}
+#info{
+  margin: auto;
+  max-width: 85%;
+}
+#info h2{
+  font-weight: bold;
+  margin-bottom: 10px;
 }
