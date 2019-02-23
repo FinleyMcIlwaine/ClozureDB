@@ -10,22 +10,53 @@ html,body{
   color: #f2f1e7;
   min-width: 260px;
   background-color: #f2f1e7;
+  margin: 0px;
+}
+.nav-link{
+  font-family: 'Roboto Slab', serif;
+  color: #f2f1e7;
+  text-decoration: none;
+  font-size: 20px;
+  -webkit-transition: font-size 0.05s;
+}
+.nav-link:hover{
+  text-shadow: 2px 2px 4px white;
+  font-size: 21px;
+}
+#nav-ul{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  background-color: #2C2828;
+  vertical-align: middle;
+}
+#nav-li{
+  display: inline-block;
+  margin: 0px;
+  min-width: 10%;
+  padding: 10px;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+}
+#home-link{
+  margin-left: 20%;
 }
 #main{
-  margin: 10px auto;
+  margin: auto;
   padding: 10px;
-  border: 0px solid;
-  border-radius: 5px;
   background: #5c4d4d
 }
 #title{
   margin: 0;
-  text-shadow: 1px 1px 5px black;
+  text-shadow: 2px 2px 5px black;
+  text-align: left;
 }
 #input-form{
   margin: auto;
   margin-top: 20px;
-  max-width: 60%;
+  max-width: 45%;
   color: #5c4d4d;
   background-color: #a96851;
   padding: 20px;
