@@ -128,7 +128,7 @@ input[type="submit"]{
   align-self: center;
   width: 100px;
   height: 40px;
-  background: #83B7C6;
+  background: rgb(42, 182, 221);
   -webkit-transition: text-shadow 0.03s, box-shadow 0.03s, width 0.03s, height 0.03s;
   transition: text-shadow 0.03s, box-shadow 0.03s, width 0.03s, height 0.03s;
 }
