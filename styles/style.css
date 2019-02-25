@@ -119,7 +119,7 @@ input[type="submit"]{
   font-family: 'Roboto Slab', serif;
   font-size: 15px;
   text-shadow: 0px 1px 4px black;
-  box-shadow: 0px 1px 5px black;
+  box-shadow: 0px 0px 6px black;
   color: #EEE9E1;
   border: 0;
   border-radius: 5px;
@@ -134,7 +134,7 @@ input[type="submit"]{
 }
 input[type="submit"]:hover{
   text-shadow: 0px 1px 3px white;
-  box-shadow:  3px 4px 8px black;
+  box-shadow:  0px 0px 12px black;
   width: 101px;
   height: 41px;
   cursor: pointer;
