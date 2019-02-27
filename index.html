@@ -47,12 +47,14 @@
           In the future (hopefully), it will provide much more information such as your schema's normal form!
         </p>
       </div>
-      <form id="input-form">
+      <form id="input-form" novalidate>
         <div id="input">
           <label id="label-1" for="relation-input" style="grid-area: label-1;">Relation Schema:</label>
-          <input type="text" id="input-1" name="relation-input" placeholder="R(A,B,C,D,...)" autofocus required style="grid-area: input-1;">
+          <input type="text" id="input-1" name="relation-input" placeholder="R(A,B,C,D,...)" autofocus style="grid-area: input-1;">
+          <p class="format-error" id="relation-error" style="grid-area: format-1"></p>
           <label id="label-2" for="dependency-input" style="grid-area: label-2;">Functional Dependencies:</label>
-          <input type="text" id="input-2" name="dependency-input" placeholder="A->B,C ; B,D->C ; ..." required style="grid-area: input-2;">
+          <input type="text" id="input-2" name="dependency-input" placeholder="A->B,C ; B,D->C ; ..." style="grid-area: input-2;">
+          <p class="format-error" id="dependency-error" style="grid-area: format-2"></p>
           <button type="button" id="submit">Submit</button>
         </div>
       </form>
@@ -65,6 +67,6 @@
         </p>
       </div>
     </div>
-    <script src="scripts/test.js"></script>
+    <script src="scripts/validInput.js"></script>
   </body>
 </html>
