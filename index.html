@@ -47,13 +47,13 @@
           In the future (hopefully), it will provide much more information such as your schema's normal form!
         </p>
       </div>
-      <form>
+      <form id="input-form">
         <div id="input">
           <label id="label-1" for="relation-input" style="grid-area: label-1;">Relation Schema:</label>
           <input type="text" id="input-1" name="relation-input" placeholder="R(A,B,C,D,...)" autofocus required style="grid-area: input-1;">
           <label id="label-2" for="dependency-input" style="grid-area: label-2;">Functional Dependencies:</label>
           <input type="text" id="input-2" name="dependency-input" placeholder="A->B,C ; B,D->C ; ..." required style="grid-area: input-2;">
-          <input type="submit" id="submit" value="Submit">
+          <button type="button" id="submit">Submit</button>
         </div>
       </form>
       <div id="info" style="margin-top: 50px;">
@@ -65,5 +65,6 @@
         </p>
       </div>
     </div>
+    <script src="scripts/test.js"></script>
   </body>
 </html>

@@ -115,7 +115,7 @@ input[type="text"]{
   text-align: center;
   background-color: #F1EDE6;
 }
-input[type="submit"]{
+#submit{
   font-family: 'Roboto Slab', serif;
   font-size: 15px;
   text-shadow: 0px 1px 4px black;
@@ -132,14 +132,14 @@ input[type="submit"]{
   -webkit-transition: text-shadow 0.03s, box-shadow 0.03s, width 0.03s, height 0.03s;
   transition: text-shadow 0.03s, box-shadow 0.03s, width 0.03s, height 0.03s;
 }
-input[type="submit"]:hover{
+#submit:hover{
   text-shadow: 0px 1px 3px white;
   box-shadow:  0px 0px 12px black;
   width: 101px;
   height: 41px;
   cursor: pointer;
 }
-input[type="submit"]:active{
+#submit:active{
   text-shadow: 0px 1px 4px black;
   box-shadow: 0px 1px 5px black;
   width: 100px;
