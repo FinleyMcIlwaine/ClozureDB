@@ -1,12 +1,13 @@
 /**
  * Validates the relation and dependency input formats.
  * If the input is in an invalid format, the submit will
- * not occur.
+ * not occur. Also handles the displaying of the error
+ * messages below the input boxes.
  * 
  * @author Finley McIlwaine
  */
 
-// Document items
+// Document item variables
 let form            = document.getElementById('input-form');
 let relationInput   = document.getElementById('input-1');
 let dependencyInput = document.getElementById('input-2');
@@ -18,38 +19,55 @@ const submitBtn     = document.getElementById('submit');
  * If relation is valid, allow processing.
  * Otherwise, display error message.
  */
-var checkRelationValidity = function() {
+function checkInputFormat() {
   const relationRegex = /^[A-Z]*\(([A-Z]+,)*[A-Z]+\)$/g;
-  const input = relationInput.value.toUpperCase();
+  const trimmedRelationString = relationInput.value.toUpperCase().replace(/ /g,'');
+
+  const dependencyRegex = /^([A-Z]+(,[A-Z]+)*->[A-Z]+(,[A-Z]+)*){1}(;[A-Z]+(,[A-Z]+)*->[A-Z]+(,[A-Z]+)*)*$/g;
+  const trimmedDependencyString = dependencyInput.value.toUpperCase().replace(/ /g,'');
   
-  if (input === "") {
+  // Check the trimmed relation input string
+  if (trimmedRelationString === "") {
     relationInput.setCustomValidity('Please enter a relation.');
   }
-  else if (!relationRegex.test(input)) {
+  else if (!relationRegex.test(trimmedRelationString)) {
     relationInput.setCustomValidity('Invalid relation format!');
   }
   else {
     relationInput.setCustomValidity('');
   }
-  updateRelationError();
+
+  // Check the trimmed dependency input string
+  if (trimmedDependencyString === "") {
+    dependencyInput.setCustomValidity('Please enter the given functional dependencies.');
+  }
+  else if (!dependencyRegex.test(trimmedDependencyString)) {
+    dependencyInput.setCustomValidity('Invalid functional dependency format!');
+  }
+  else {
+    dependencyInput.setCustomValidity('');
+  }
+
+  updateRelationErrorMsg();
+  updateDependencyErrorMsg();
 };
 
-function updateRelationError() {
+// Update the error messages beneath the input boxes.
+function updateRelationErrorMsg() {
   relationError.innerHTML = relationInput.validationMessage;
 }
-
-relationInput.addEventListener('input', ()=>{
-  relationInput.setCustomValidity('');
-  updateRelationError();
-});
-
-/**
- * If dependencies are valid, allow processing.
- * Otherwise, display error message.
- */
-function checkDependencyValidity() {
-  // TO-DO
+function updateDependencyErrorMsg() {
+  dependencyError.innerHTML = dependencyInput.validationMessage;
 }
 
-submitBtn.addEventListener('click', checkRelationValidity);
-submitBtn.addEventListener('click', checkDependencyValidity);
+// On input, remove the error messages beneath respective input box.
+relationInput.addEventListener('input', ()=>{
+  relationInput.setCustomValidity('');
+  updateRelationErrorMsg();
+});
+dependencyInput.addEventListener('input', ()=>{
+  dependencyInput.setCustomValidity('');
+  updateDependencyErrorMsg();
+});
+
+submitBtn.addEventListener('click', checkInputFormat);

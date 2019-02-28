@@ -151,3 +151,6 @@ input[type="text"]{
   width: 100px;
   height: 40px;
 }
+#submit:focus{
+  outline: 0;
+}
