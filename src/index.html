@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <title>ClozureDB: Database Design Tools</title>
+  </head>
+  <body>
+    <div id="navbar" class="navbar">
+      <ul id="nav-ul">
+        <li id="nav-li">
+          <h1 id="title">
+            ClozureDB
+          </h1>
+          <div id="title">
+            Relational Database Design Tool
+          </div>
+        </li>
+        <li id="nav-li">
+          <a href="#home" id="home-link" class="nav-link">Home</a>
+        </li>
+        <li id="nav-li">
+          <a href="#about" id="about-link" class="nav-link">About</a>
+        </li>
+        <li id="nav-li" style="float: right; margin-top: 18px">
+          <a href="https://github.com/FinleyMcIlwaine/ClozureDB" id="github-link" class="nav-link" target="_blank">Github</a>
+        </li>
+      </ul>
+      </ul>
+    </div>
+    <div id="main">
+      <div id="info">
+        <h2>
+          How does this work?
+        </h2>
+        <p>
+          Simply input your relation schema and any given functional dependencies (in the correct format), press submit, and voila!
+          ClozureDB will calculate as much useful information as it can and output it below.
+        </p>
+        <h2>
+          What information will ClozureDB give me?
+        </h2>
+        <p>
+          As of right now, ClozureDB is focused primarily on calculating the closures, keys, and superkeys of your schema.
+          In the future (hopefully), it will provide much more information such as your schema's normal form!
+        </p>
+      </div>
+      <form id="input-form" novalidate>
+        <div id="input">
+          <label id="label-1" for="relation-input" style="grid-area: label-1;">Relation Schema:</label>
+          <input type="text" id="input-1" name="relation-input" placeholder="R(A,B,C,D,...)" autofocus style="grid-area: input-1;">
+          <p class="format-error" id="relation-error" style="grid-area: format-1"></p>
+          <label id="label-2" for="dependency-input" style="grid-area: label-2;">Functional Dependencies:</label>
+          <input type="text" id="input-2" name="dependency-input" placeholder="A->B,C ; B,D->C ; ..." style="grid-area: input-2;">
+          <p class="format-error" id="dependency-error" style="grid-area: format-2"></p>
+          <button type="button" id="submit">Submit</button>
+        </div>
+      </form>
+      <div id="info" style="margin-top: 50px;">
+        <h2>Attribute Closures</h2>
+        <p>
+          In the output area below, ClozureDB will list the closures of all elements
+          in the powerset of your schema's attributes. Keys and superkeys will be
+          denoted somehow...
+        </p>
+      </div>
+    </div>
+    <script src="scripts/validateInput.js"></script>
+  </body>
+</html>
