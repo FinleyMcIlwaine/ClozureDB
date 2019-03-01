@@ -13,7 +13,13 @@ html,body{
   margin: 0px;
 }
 #title{
-  margin: 0;
+  margin: 0px;
+  text-shadow: 2px 2px 5px black;
+  text-align: left;
+  font-size: 25px;
+}
+#title-cap{
+  margin: 0px;
   text-shadow: 2px 2px 5px black;
   text-align: left;
 }
@@ -36,13 +42,13 @@ html,body{
   list-style-type: none;
   margin: 0px;
   padding: 0px;
+  /*padding-bottom: 10px;*/
   overflow: hidden;
   background-color: #2C2828;
   vertical-align: middle;
   position: fixed;
   top: 0;
   width: 100%;
-  height: 83px;
 }
 #nav-li{
   display: inline-block;

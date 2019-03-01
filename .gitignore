@@ -79,6 +79,9 @@ Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
 
+# Photoshop
+.psd
+
 # Dump file
 *.stackdump
 
