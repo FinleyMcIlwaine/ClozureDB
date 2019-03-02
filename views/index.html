@@ -20,10 +20,10 @@
           </div>
         </li>
         <li id="nav-li">
-          <a href="#home" id="home-link" class="nav-link">Home</a>
+          <a href="/" id="home-link" class="nav-link">Home</a>
         </li>
         <li id="nav-li">
-          <a href="#about" id="about-link" class="nav-link">About</a>
+          <a href="about" id="about-link" class="nav-link">About</a>
         </li>
         <li id="nav-li" style="float: right; margin-top: 18px">
           <a href="https://github.com/FinleyMcIlwaine/ClozureDB" id="github-link" class="nav-link" target="_blank">Github</a>
@@ -37,19 +37,36 @@
           How does this work?
         </h2>
         <p>
-          Simply input your relation schema and any given functional dependencies (in the correct format), press submit, and voila!
-          ClozureDB will calculate as much useful information as it can and output it below.
+          Just input your relation schema and any given functional dependencies and hit submit! ClozureDB<sup>+</sup>
+          will calculate and display as much useful information about your schema as it can.
         </p>
         <h2>
-          What information will ClozureDB give me?
+          What information will ClozureDB<sup>+</sup> give me?
         </h2>
         <p>
-          As of right now, ClozureDB is focused primarily on calculating the closures, keys, and superkeys of your schema.
-          In the future (hopefully), it will provide much more information such as your schema's normal form!
+          ClozureDB<sup>+</sup> is in a heavy development phase. Currently, I am working on parsing and validating
+          input. Once that is complete, the first feature to be implemented will be the calculation of attribute
+          closures and keys/superkeys. Check out the
+          <a href="https://github.com/FinleyMcIlwaine/ClozureDB" style="text-decoration: none;">Github</a>
+          and reach out if you are interested in contributing!
         </p>
       </div>
       <form id="input-form" novalidate>
         <div id="input">
+          <div id="input-tip">
+            <div class="tooltip">
+              Formatting Info
+              <span class="tooltiptext">
+                <strong>Relation format:</strong><br>
+                TITLE(A,B,C,D,...,Z)<br>
+                <strong>FD format:</strong><br>
+                A->B ; C->A,B ; A,D->C<br>
+                Relation title is optional.<br>
+                Input is case insensitive and spaces are ignored.<br>
+                Input must not contain numbers.
+              </span>
+            </div>
+          </div>
           <label id="label-1" for="relation-input" style="grid-area: label-1;">Relation Schema:</label>
           <input type="text" id="input-1" name="relation-input" placeholder="R(A,B,C,D,...)" autofocus style="grid-area: input-1;">
           <p class="format-error" id="relation-error" style="grid-area: format-1"></p>

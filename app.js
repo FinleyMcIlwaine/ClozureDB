@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cons = require("consolidate");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var aboutRouter = require('./routes/about');
 
 var app = express();
 
@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/about', aboutRouter);
 app.use(express.static(__dirname + '/public'));
 app.use('/favicon.ico', express.static('images/favicon.ico'));
 

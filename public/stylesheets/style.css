@@ -43,13 +43,13 @@ html,body{
   list-style-type: none;
   margin: 0px;
   padding: 0px;
-  /*padding-bottom: 10px;*/
   overflow: hidden;
   background-color: #2C2828;
   vertical-align: middle;
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 0px 0px 10px black;
 }
 #nav-li{
   display: inline-block;
@@ -67,13 +67,13 @@ html,body{
 }
 #main{
   margin: auto;
-  margin-top: 68px;
+  margin-top: 60px;
   max-width: 60%;
   min-width: 1000px;
   color: #2C2828;
   background-color: #EEE9E1;
   padding: 20px;
-  box-shadow: 3px 3px 10px black;
+  box-shadow: 0px 3px 20px black;
 }
 #info{
   margin: auto;
@@ -91,7 +91,8 @@ html,body{
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 50px 40px 50px 40px 70px;
-  grid-template-areas: 
+  grid-template-areas:
+  "input-tip input-tip"
   "label-1 input-1"
   ".       format-1"
   "label-2 input-2"
@@ -104,6 +105,54 @@ html,body{
   color: #EEE9E1;
   border-radius: 2px;
   box-shadow: 1px 1px 10px black;
+}
+#input-tip{
+  grid-area: input-tip;
+  justify-self: right;
+  margin-right: 60px;
+  align-self: center;
+  padding-bottom: 0px;
+  color: rgba(238, 233, 225, 0.616);
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted rgba(238, 233, 225, 0.384);
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(44, 40, 40);
+  color: rgba(238, 233, 225, 0.514);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  width: 350px;
+  bottom: 125%;
+  left: 50%; 
+  margin-left: -175px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s;
+  font-size: 13px;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltiptext{
+  box-shadow: 0px 0px 20px black;
+}
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #2C2828 transparent transparent transparent;
 }
 #label-1,#label-2{
   font-size: 20px;

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <title>ClozureDB: Database Design Tool</title>
+  </head>
+  <body>
+    <div id="navbar" class="navbar">
+      <ul id="nav-ul">
+        <li id="nav-li" class="title-area">
+          <h1 id="title">
+            ClozureDB<sup>+</sup>
+          </h1>
+          <div id="title-cap">
+            Relational Database Design Tool
+          </div>
+        </li>
+        <li id="nav-li">
+          <a href="/" id="home-link" class="nav-link">Home</a>
+        </li>
+        <li id="nav-li">
+          <a href="about" id="about-link" class="nav-link">About</a>
+        </li>
+        <li id="nav-li" style="float: right; margin-top: 18px">
+          <a href="https://github.com/FinleyMcIlwaine/ClozureDB" id="github-link" class="nav-link" target="_blank">Github</a>
+        </li>
+      </ul>
+      </ul>
+    </div>
+    <div id="main">
+      <div id="info">
+        <h2>
+          How does this work?
+        </h2>
+        <p>
+          Simply input your relation schema and any given functional dependencies (in the correct format), press submit, and voila!
+          ClozureDB will calculate as much useful information as it can and output it below.
+        </p>
+        <h2>
+          What information will ClozureDB give me?
+        </h2>
+        <p>
+          As of right now, ClozureDB is focused primarily on calculating the closures, keys, and superkeys of your schema.
+          In the future (hopefully), it will provide much more information such as your schema's normal form!
+        </p>
+      
+      </div>
+    <script src="/javascripts/validateInput.js"></script>
+  </body>
+</html>
