@@ -60,7 +60,7 @@ function updateDependencyErrorMsg() {
   dependencyError.innerHTML = dependencyInput.validationMessage;
 }
 
-// On input, remove the error messages beneath respective input box.
+// On input, remove the error messages beneath appropriate input box.
 relationInput.addEventListener('input', ()=>{
   relationInput.setCustomValidity('');
   updateRelationErrorMsg();
