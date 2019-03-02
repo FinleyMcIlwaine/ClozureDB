@@ -1,29 +1,28 @@
 /**
  * Validates the relation and dependency input formats.
- * If the input is in an invalid format, the submit will
- * not occur. Also handles the displaying of the error
- * messages below the input boxes.
+ * If the input is in an invalid format, the appropriate
+ * error messages are displayed. If format is correct,
+ * the parse event is dispatched.
  * 
  * @author Finley McIlwaine
  */
 
-// Document item variables
-let form            = document.getElementById('input-form');
-let relationInput   = document.getElementById('input-1');
-let dependencyInput = document.getElementById('input-2');
-let relationError   = document.getElementById('relation-error');
-let dependencyError = document.getElementById('dependency-error');
-const submitBtn     = document.getElementById('submit');
+// Input form items
+let relationInput      = document.getElementById('input-1');
+let dependencyInput    = document.getElementById('input-2');
+let relationErrorMsg   = document.getElementById('relation-error');
+let dependencyErrorMsg = document.getElementById('dependency-error');
+const submitBtn        = document.getElementById('submit');
 
 /**
- * If relation is valid, allow processing.
- * Otherwise, display error message.
+ * If input format is valid, dispatch parse event.
+ * Otherwise, display appropriate error messages.
  */
-function checkInputFormat() {
+function validateInputFormat() {
   const relationRegex = /^[A-Z]*\(([A-Z]+,)*[A-Z]+\)$/g;
   const trimmedRelationString = relationInput.value.toUpperCase().replace(/ /g,'');
 
-  const dependencyRegex = /^([A-Z]+(,[A-Z]+)*->[A-Z]+(,[A-Z]+)*){1}(;[A-Z]+(,[A-Z]+)*->[A-Z]+(,[A-Z]+)*)*$/g;
+  const dependencyRegex = /^([A-Z]+(,[A-Z]+)*->[A-Z]+(,[A-Z]+)*)*$/g;
   const trimmedDependencyString = dependencyInput.value.toUpperCase().replace(/ /g,'');
   
   // Check the trimmed relation input string
@@ -38,10 +37,7 @@ function checkInputFormat() {
   }
 
   // Check the trimmed dependency input string
-  if (trimmedDependencyString === "") {
-    dependencyInput.setCustomValidity('Please enter the given functional dependencies.');
-  }
-  else if (!dependencyRegex.test(trimmedDependencyString)) {
+  if (!dependencyRegex.test(trimmedDependencyString)) {
     dependencyInput.setCustomValidity('Invalid functional dependency format!');
   }
   else {
@@ -54,10 +50,10 @@ function checkInputFormat() {
 
 // Update the error messages beneath the input boxes.
 function updateRelationErrorMsg() {
-  relationError.innerHTML = relationInput.validationMessage;
+  relationErrorMsg.innerHTML = relationInput.validationMessage;
 }
 function updateDependencyErrorMsg() {
-  dependencyError.innerHTML = dependencyInput.validationMessage;
+  dependencyErrorMsg.innerHTML = dependencyInput.validationMessage;
 }
 
 // On input, remove the error messages beneath appropriate input box.
@@ -70,4 +66,5 @@ dependencyInput.addEventListener('input', ()=>{
   updateDependencyErrorMsg();
 });
 
-submitBtn.addEventListener('click', checkInputFormat);
+// Submit button click event calls input format validation
+submitBtn.addEventListener('click', validateInputFormat);

@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
 
 var app = express();
+app.use('/static', express.static(path.join(__dirname, '/public')))
 
 // view engine setup
 app.engine('html',cons.swig);
@@ -19,11 +20,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
-app.use(express.static(__dirname + '/public'));
 app.use('/favicon.ico', express.static('images/favicon.ico'));
 
 // catch 404 and forward to error handler
