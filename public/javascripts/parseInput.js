@@ -25,13 +25,10 @@ function parseInput(relationString, dependenciesString) {
 
   // Extract relation attributes from input string and put them in the schema object.
   schema.attributes = relationString.slice(schema.name ? schema.name.length + 1 : 1 , relationString.length - 1).split(',');
-
-  // Check for duplicate attributes in relation schema.
-  if (hasDuplicates(schema.attributes)) {
-    relationInput.setCustomValidity('Schema may not contain duplicate attributes.');
-    updateRelationErrorMsg();
-    return;  // THROW EXCEPTION!?!?!?
-  }
+  if (hasDuplicates(schema.attributes)) throw {
+    code: 1,
+    msg: 'Schema may not contain duplicate attributes.'
+  };
 
   // Extract dependencies from input string and put them in the dependencies object.
   if (dependenciesString != "") {
@@ -45,21 +42,18 @@ function parseInput(relationString, dependenciesString) {
       for(let j = 0; j < atts.length; j++) {
         let splitAtts = atts[j].split(',');
         for(let k = 0; k < splitAtts.length; k++) {
-          if (schema.attributes.indexOf(splitAtts[k]) < 0) {
-            // FD attribute is not a member of relation attributes,
-            // output error and return.
-            dependencyInput.setCustomValidity('Attribute \'' + splitAtts[k] + '\' is not a valid attribute.');
-            updateDependencyErrorMsg();
-            return; // THROW EXCEPTION!?!?!?
-          }
-          else if (j%2 === 0) {
-            newFD.leftAttributes.push(splitAtts[k]);
-          }
-          else {
-            newFD.rightAttributes.push(splitAtts[k]);
+            if (schema.attributes.indexOf(splitAtts[k]) < 0) throw {
+              code: 2,
+              msg: 'Attribute \'' + splitAtts[k] + '\' is not included in schema.'
+            };
+            if (j%2 === 0) {
+              newFD.leftAttributes.push(splitAtts[k]);
+            }
+            else {
+              newFD.rightAttributes.push(splitAtts[k]);
+            }
           }
         }
-      }
       dependencies.given.push(newFD);
     }
   }

@@ -2,8 +2,7 @@
  * Validates the relation and dependency input formats.
  * If the input is in an invalid format, the appropriate
  * error messages are displayed. If format is correct,
- * the input is parsed, checked for logical errors.
- * If no logical errors, the post request is made.
+ * the input is passed to parseInput().
  * 
  * @author Finley McIlwaine
  */
@@ -25,38 +24,42 @@ submitBtn.addEventListener('click', validateInputFormat);
 function validateInputFormat() {
   const relationRegex = /^[A-Z]*\(([A-Z]+,)*[A-Z]+\)$/g;
   const trimmedRelationString = relationInput.value.toUpperCase().replace(/ /g,'');
-
+  
   const dependencyRegex = /(^([A-Z]+(,[A-Z]+)*->[A-Z]+(,[A-Z]+)*){1}(;[A-Z]+(,[A-Z]+)*->[A-Z]+(,[A-Z]+)*)*$)|^$/;
   const trimmedDependencyString = dependencyInput.value.toUpperCase().replace(/ /g,'');
-  
-  let relationCheck = false, dependencyCheck = false;
 
-  // Check the trimmed relation input string
-  if (trimmedRelationString === "") {
-    relationInput.setCustomValidity('Please enter a relation.');
-  }
-  else if (!relationRegex.test(trimmedRelationString)) {
-    relationInput.setCustomValidity('Invalid relation format.');
-  }
-  else {
+  try {
+    // Check the trimmed relation input string
+    if (trimmedRelationString === "") throw {
+      code: 1,
+      msg: 'Please enter a relation.'
+    };
+    else if (!relationRegex.test(trimmedRelationString)) throw {
+      code: 1,
+      msg: 'Invalid relation format.'
+    };
     relationInput.setCustomValidity('');
-    relationCheck = true;
-  }
-
-  // Check the trimmed dependency input string
-  if (!dependencyRegex.test(trimmedDependencyString)) {
-    dependencyInput.setCustomValidity('Invalid functional dependency format.');
-  }
-  else {
+  
+    // Check the trimmed dependency input string
+    if (!dependencyRegex.test(trimmedDependencyString)) throw {
+      code: 2,
+      msg: 'Invalid functional dependency format.'
+    };
     dependencyInput.setCustomValidity('');
-    dependencyCheck = true;
-  }
 
-  updateRelationErrorMsg();
-  updateDependencyErrorMsg();
-
-  if (relationCheck && dependencyCheck) {
+    updateRelationErrorMsg();
+    updateDependencyErrorMsg();
     parseInput(trimmedRelationString,trimmedDependencyString);
+  }
+  catch(err) {
+    if (err.code == 1) {
+      relationInput.setCustomValidity(err.msg);
+      updateRelationErrorMsg();
+    }
+    else if (err.code == 2) {
+      dependencyInput.setCustomValidity(err.msg);
+      updateDependencyErrorMsg();
+    }
   }
 };
 
