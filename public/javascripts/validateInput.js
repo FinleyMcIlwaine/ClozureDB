@@ -34,14 +34,16 @@ function validateInputFormat() {
   }
   else {
     relationInput.setCustomValidity('');
+    if (dependencyRegex.test(trimmedDependencyString)) {
+      dependencyInput.setCustomValidity('');
+      // TO-DO
+      // CALL PARSE-INPUT FUNCTION THEN POST!!!
+    }
   }
 
   // Check the trimmed dependency input string
   if (!dependencyRegex.test(trimmedDependencyString)) {
     dependencyInput.setCustomValidity('Invalid functional dependency format!');
-  }
-  else {
-    dependencyInput.setCustomValidity('');
   }
 
   updateRelationErrorMsg();
