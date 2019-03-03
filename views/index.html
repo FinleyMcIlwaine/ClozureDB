@@ -27,7 +27,7 @@
       </div>
     </div>
     <div id="main">
-      <div id="info">
+      <div id="how-does-this-work" class="info">
         <h2>
           How does this work?
         </h2>
@@ -35,6 +35,8 @@
           Just input your relation schema and any given functional dependencies and hit submit! ClozureDB<sup>+</sup>
           will calculate and display as much useful information about your schema as it can.
         </p>
+      </div>
+      <div id="what-information" class="info">
         <h2>
           What information will ClozureDB<sup>+</sup> give me?
         </h2>
@@ -46,7 +48,29 @@
           and reach out if you are interested in contributing!
         </p>
       </div>
-      <form id="input-form" novalidate>
+      <form id="input-form" class="form" novalidate>
+        <div id="relation-input-area" class="input-area">
+          <label id="relation-label" class="input-label" for="relation-input">Relation Schema:</label>
+          <div id="relation-input-container">
+            <div class="tooltip-container">
+              <div class="tooltip">
+                Formatting Info
+                <span class="tooltiptext">
+                  <strong>Relation format:</strong><br>
+                  TITLE(A,B,C,D,...,Z)<br>
+                  <strong>FD format:</strong><br>
+                  A->B ; C->A,B ; A,D->C<br><br>
+                  Relation title is optional.<br>
+                  Input is case insensitive and spaces are ignored.<br>
+                  Input must not contain numbers.
+                </span>
+              </div>
+            </div>
+            <input type="text" id="relation-input" class="input" name="relation-input" placeholder="R(A,B,C,D,...)" autofocus>
+            <p class="format-error" id="relation-error"></p>
+          </div>
+        </div>
+        <!--
         <div id="input">
           <div id="input-tip">
             <div class="tooltip">
@@ -70,8 +94,9 @@
           <p class="format-error" id="dependency-error" style="grid-area: format-2"></p>
           <button type="button" id="submit">Submit</button>
         </div>
+        -->
       </form>
-      <div id="info" style="margin-top: 50px;">
+      <div id="info" class="info">
         <h2>Attribute Closures, Keys, and Superkeys</h2>
         <p>
           In the left output area below, ClozureDB<sup>+</sup> will list the closure of each element in the powerset of given attributes.
