@@ -7,7 +7,9 @@
  */
 
  /**
-  * 
+  * Parses input and verifies it is logically valid.
+  * Throws appropriate exceptions if necessary.
+  * If input if valid, it is passed to generateOutput
   * @param {str} relationString correctly formatted input relation string
   * @param {str} dependenciesString correctly formatted string of functional dependencies
   */
@@ -19,6 +21,7 @@ function parseInput(relationString, dependenciesString) {
   };
   let dependencies = {
     given: [],
+    split: [],
     minimal: [],
     complete: []
   };

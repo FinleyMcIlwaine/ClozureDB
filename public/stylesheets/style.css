@@ -159,7 +159,7 @@ html,body{
   width: 80%;
   height: 30px;
   border-radius: 3px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Source Code Pro', monospace;
   font-size: 18px;
 }
 input[type="text"]{
