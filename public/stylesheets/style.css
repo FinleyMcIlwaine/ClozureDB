@@ -5,14 +5,23 @@ html,body{
   background-color: #39404E;
   margin: 0px;
 }
+.navbar-container{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #2C2828;
+  display: flex;
+  justify-content: center;
+}
 .navbar{
   display: flex;
-  justify-content: flex-start;
-  margin: 0px;
+  justify-content: space-between;
+  width: 70%;
+  min-width: 570px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   background-color: #2C2828;
   align-items: center;
-  padding-left: 8px;
-  padding-right: 15px;
 }
 .site-header{
   padding-bottom: 5px;
@@ -32,10 +41,10 @@ html,body{
   display: flex;
   align-items: center;
   justify-items: center;
-  margin-left: 10%;
-}
-#github-link-container{
   margin-left: auto;
+}
+#home-link-container{
+  margin-left: 12%;
 }
 .nav-link{
   margin: auto;
@@ -50,11 +59,12 @@ html,body{
 }
 #main{
   margin: auto;
-  max-width: 60%;
-  min-width: 1000px;
+  margin-top: 62px; /*position below nav*/
+  padding-top: 10px;
+  max-width: 70%;
+  min-width: 570px;
   color: #2C2828;
   background-color: #EEE9E1;
-  padding: 20px;
   box-shadow: 0px 3px 20px black;
 }
 #info{
@@ -208,11 +218,14 @@ input[type="text"]{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0px;
+    justify-content: space-around;
+    min-width: 0;
     background-color: #2C2828;
     align-items: center;
     padding: 8px;
+  }
+  #home-link-container{
+    margin: 0;
   }
   .site-header{
     justify-content: center;
@@ -227,10 +240,9 @@ input[type="text"]{
     justify-content: center;
   }
   .nav-link-container{
-    margin: auto;
-    flex-basis: 30%;
+    margin: 0;
   }
   #github-link-container{
-    margin: auto;
+    margin: 0;
   }
 }
