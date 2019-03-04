@@ -254,10 +254,14 @@ input[type="text"]{
   }
   #relation-label{
     padding: 0px;
-    margin-bottom: -21px;
+    margin-bottom: -17px;
   }
   .tooltip{
     font-size: 10px;
+  }
+  .format-error{
+    text-align: center;
+    margin-right: 0;
   }
 }
 @media (max-width: 580px) {
