@@ -261,7 +261,7 @@ input[type="text"]{
 .output-section p{
   margin-top: 20px;
   margin-bottom: 3px;
-  font-size: 15px;
+  font-size: 17px;
 }
 textarea{
   text-align: left;
@@ -270,7 +270,9 @@ textarea{
   border-radius: 3px;
   resize: none;
   overflow-y: scroll;
+  overflow-x: scroll;
   font-family: "Source Code Pro", monospace;
+  font-size: 15px;
   margin-bottom: 8px;
 }
 @media (min-width: 1300px) {
