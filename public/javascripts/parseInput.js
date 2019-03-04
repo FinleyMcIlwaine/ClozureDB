@@ -1,7 +1,7 @@
 /**
  * Parses input for logical errors and outputs
  * appropriate error messages if there are errors.
- * Otherwise, sends input data through POST request.
+ * Otherwise, sends input data to generateOutput().
  * 
  * @author Finley McIlwaine
  */
@@ -23,7 +23,7 @@ function parseInput(relationString, dependenciesString) {
     given: [],
     split: [],
     minimal: [],
-    complete: []
+    complete: [],
   };
 
   // Extract relation attributes from input string and put them in the schema object.
@@ -60,6 +60,8 @@ function parseInput(relationString, dependenciesString) {
       dependencies.given.push(newFD);
     }
   }
+  // Input is valid! Generate output.
+  generateOutput(schema,dependencies);
 }
 
 /**
