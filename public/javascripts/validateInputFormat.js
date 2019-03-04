@@ -8,8 +8,8 @@
  */
 
 // Input form items
-let relationInput      = document.getElementById('input-1');
-let dependencyInput    = document.getElementById('input-2');
+let relationInput      = document.getElementById('relation-input');
+let dependencyInput    = document.getElementById('dependency-input');
 let relationErrorMsg   = document.getElementById('relation-error');
 let dependencyErrorMsg = document.getElementById('dependency-error');
 const submitBtn        = document.getElementById('submit');

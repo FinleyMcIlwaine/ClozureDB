@@ -51,7 +51,7 @@
       <form id="input-form" class="form" novalidate>
         <div id="relation-input-area" class="input-area">
           <label id="relation-label" class="input-label" for="relation-input">Relation Schema:</label>
-          <div id="relation-input-container">
+          <div id="relation-input-container" class="input-container">
             <div class="tooltip-container">
               <div class="tooltip">
                 Formatting Info
@@ -67,9 +67,21 @@
               </div>
             </div>
             <input type="text" id="relation-input" class="input" name="relation-input" placeholder="R(A,B,C,D,...)" autofocus>
-            <p class="format-error" id="relation-error"></p>
           </div>
         </div>
+        <div class="error-container">
+          <p class="format-error" id="relation-error"></p>
+        </div>
+        <div id="dependency-input-area" class="input-area">
+          <label id="dependency-label" class="input-label" for="dependency-input">Functional Dependencies:</label>
+          <div id="dependency-input-container" class="input-container">
+            <input type="text" id="dependency-input" class="input" name="dependency-input" placeholder="A->B,C ; C->B,D ; ..." autofocus>
+          </div>
+        </div>
+        <div class="error-container">
+          <p class="format-error" id="dependency-error"></p>
+        </div>
+        <button type="button" id="submit" class="submit-btn">Submit</button>
         <!--
         <div id="input">
           <div id="input-tip">
