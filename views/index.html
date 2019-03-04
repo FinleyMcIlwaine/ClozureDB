@@ -48,6 +48,11 @@
           and reach out if you are interested in contributing!
         </p>
       </div>
+      <div id="input-section-header" class="section-header">
+        <h2>
+          Input your schema:
+        </h2>
+      </div>
       <form id="input-form" class="form" novalidate>
         <div id="relation-input-area" class="input-area">
           <label id="relation-label" class="input-label" for="relation-input">Relation Schema:</label>
@@ -75,7 +80,7 @@
         <div id="dependency-input-area" class="input-area">
           <label id="dependency-label" class="input-label" for="dependency-input">Functional Dependencies:</label>
           <div id="dependency-input-container" class="input-container">
-            <input type="text" id="dependency-input" class="input" name="dependency-input" placeholder="A->B,C ; C->B,D ; ..." autofocus>
+            <input type="text" id="dependency-input" class="input" name="dependency-input" placeholder="A->B,C ; C,D->A ; ..." autofocus>
           </div>
         </div>
         <div class="error-container">
@@ -83,11 +88,26 @@
         </div>
         <button type="button" id="submit" class="submit-btn">Submit</button>
       </form>
-      <div id="info" class="info">
-        <h2>Attribute Closures, Keys, and Superkeys</h2>
-        <p>
-          In the left output area below, ClozureDB<sup>+</sup> will list the closure of each element in the powerset of given attributes.
-        </p>
+      <div id="closures-section-header" class="section-header">
+        <h2>
+          Attribute closures, keys and superkeys:
+        </h2>
+      </div>
+      <div id="closures-output-area" class="output-area">
+        <div id="closures-section" class="output-section">
+          <p>
+            Closures of each element in the powerset of attributes:
+          </p>
+          <textarea name="closures-output" wrap="hard" rows="20" readonly
+          placeholder="The closures of each element in the powerset of attributes will be output here."></textarea>
+        </div>
+        <div id="closures-section" class="output-section">
+          <p>
+            Minimal keys and superkeys:
+          </p>
+          <textarea name="keys-output" wrap="hard" rows="20" readonly
+          placeholder="Minimal keys and superkeys of the relation will be output here."></textarea>
+        </div>
       </div>
     </div>
     <script src="/static/javascripts/validateInputFormat.js"></script>
