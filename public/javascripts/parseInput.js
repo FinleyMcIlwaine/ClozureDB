@@ -20,10 +20,10 @@ function parseInput(relationString, dependenciesString) {
     attributes: []
   };
   let dependencies = {
-    given: [],
+    given: new Set(),
     split: [],
     minimal: [],
-    complete: [],
+    complete: []
   };
 
   // Extract relation attributes from input string and put them in the schema object.
@@ -38,8 +38,8 @@ function parseInput(relationString, dependenciesString) {
     let deps   = dependenciesString.split(";");
     for(let i = 0; i < deps.length; i++) {
       let newFD = {
-        leftAttributes: [],
-        rightAttributes: []
+        leftAttributes: new Set(),
+        rightAttributes: new Set()
       }
       let atts = deps[i].split('->');
       for(let j = 0; j < atts.length; j++) {
@@ -50,17 +50,20 @@ function parseInput(relationString, dependenciesString) {
               msg: 'Attribute \'' + splitAtts[k] + '\' is not included in schema.'
             };
             if (j%2 === 0) {
-              newFD.leftAttributes.push(splitAtts[k]);
+              newFD.leftAttributes.add(splitAtts[k]);
             }
             else {
-              newFD.rightAttributes.push(splitAtts[k]);
+              newFD.rightAttributes.add(splitAtts[k]);
             }
           }
         }
-      dependencies.given.push(newFD);
+      newFD.leftAttributes = Array.from(newFD.leftAttributes);
+      newFD.rightAttributes= Array.from(newFD.rightAttributes);
+      dependencies.given.add(newFD);
     }
   }
   // Input is valid! Generate output.
+  dependencies.given = Array.from(dependencies.given);
   generateOutput(schema,dependencies);
 }
 
