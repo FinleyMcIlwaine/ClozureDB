@@ -32,11 +32,11 @@ function validateInputFormat() {
     // Check the trimmed relation input string
     if (trimmedRelationString === "") throw {
       code: 1,
-      msg: 'Please enter a relation.'
+      msg: 'Please enter a relation schema.'
     };
     else if (!relationRegex.test(trimmedRelationString)) throw {
       code: 1,
-      msg: 'Invalid relation format.'
+      msg: 'Invalid relation schema format.'
     };
     relationInput.setCustomValidity('');
   

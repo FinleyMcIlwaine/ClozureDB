@@ -41,9 +41,8 @@
           What information will ClozureDB<sup>+</sup> give me?
         </h2>
         <p>
-          ClozureDB<sup>+</sup> is in a heavy development phase. Currently, I am working on parsing and validating
-          input. Once that is complete, the first feature to be implemented will be the calculation of attribute
-          closures and keys/superkeys. Check out the
+          ClozureDB<sup>+</sup> is in a heavy development phase. Currently, I am working on calculating the minimal cover
+          cover set of functional dependencies. Check out the
           <a href="https://github.com/FinleyMcIlwaine/ClozureDB" style="text-decoration: none;">Github</a>
           and reach out if you are interested in contributing!
         </p>
@@ -90,7 +89,7 @@
       </form>
       <div id="closures-section-header" class="section-header">
         <h2>
-          Attribute closures, keys and superkeys:
+          Attribute set closures, keys, and prime attributes:
         </h2>
       </div>
       <div id="closures-output-area" class="output-area">
@@ -103,10 +102,10 @@
         </div>
         <div id="closures-section" class="output-section">
           <p>
-            Minimal keys and superkeys:
+            Minimum keys, superkeys, and prime attributes:
           </p>
           <textarea id="keys-output" name="keys-output" rows="20" readonly
-          placeholder="Minimal keys and superkeys of the relation will be output here."></textarea>
+          placeholder="Minimum keys, superkeys, and prime attributes of the relation will be output here."></textarea>
         </div>
       </div>
     </div>

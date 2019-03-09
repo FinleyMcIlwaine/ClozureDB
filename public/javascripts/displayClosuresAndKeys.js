@@ -38,7 +38,7 @@ function displayClosuresAndKeys(closures,keys,schemaAttributes) {
   keysOutputString += '\r\n\r\n COMPOSITE MINIMUM CANDIDATE KEYS:   \r\n' +
                               '-----------------------------------\r\n';
   if (keys.minimumComposite.length == 0) {
-    keysOutputString += 'No composite minimum candidate keys were found.\r\n'
+    keysOutputString += 'No composite minimum candidate keys were found.\r\n';
   }
   else{
     for(let i = 0; i < keys.minimumComposite.length; i++) {
@@ -48,16 +48,42 @@ function displayClosuresAndKeys(closures,keys,schemaAttributes) {
   keysOutputString += '\r\n\r\n            SUPER KEYS:   \r\n' +
                                '-----------------------------------\r\n';
   if (keys.super.length == 0) {
-    keysOutputString += 'No super keys were found.'
+    keysOutputString += 'No super keys were found.';
   }
   else{
     for(let i = 0; i < keys.super.length; i++) {
       keysOutputString += printSetToString(keys.super[i]) + '\r\n';
     }
   }
+  // Displays prime attributes
+  keysOutputString += '\r\n\r\n         PRIME ATTRIBUTES:   \r\n' +
+                               '-----------------------------------\r\n';
+  if (keys.minimumComposite.length == 0 && keys.minimum.length == 0) {
+    keysOutputString += 'There are no prime attributes.';
+  }
+  else{
+    // Build the set of prime attributes
+    let primeAtts = [];
+    if (keys.minimum.length != 0) {
+      keys.minimum.forEach((key)=>{if (!primeAtts.includes(key[0])) primeAtts.push(key[0])});
+    }
+    else {
+      keys.minimumComposite.forEach((key)=>{
+        key.forEach((att)=> {
+          if (!primeAtts.includes(att)) primeAtts.push(att);
+        })
+      });
+    }
+    keysOutputString += printSetToString(primeAtts);
+  }
   keysOutputArea.value = keysOutputString;
 }
 
+/**
+ * Returns the string formatted closure of a set of attributes.
+ * @param {Object} closure 
+ * @param {int} charsToEquals 
+ */
 function printClosureToString(closure,charsToEquals) {
   let leftSetLength = (closure.leftSet.length - 1) * 2 + 3;
   closure.leftSet.forEach((att)=>leftSetLength+=att.length);
@@ -74,6 +100,10 @@ function printClosureToString(closure,charsToEquals) {
   return string;
 }
 
+/**
+ * Returns the string format of the input set.
+ * @param {Array} set 
+ */
 function printSetToString(set) {
   let string = '{';
   for(let i = 0; i < set.length; i++) {
