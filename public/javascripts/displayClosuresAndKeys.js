@@ -13,11 +13,13 @@ function displayClosuresAndKeys(closures,keys,schemaAttributes) {
   let keysOutputString = '';
 
   // Display closures
-  let maxSetLength = schemaAttributes.length;
+  let charsToEquals = (schemaAttributes.length - 1) * 2 + 3; // Accounts for commas, spaces, brackets, closure symbol
+  schemaAttributes.forEach((att)=>charsToEquals+=att.length);
+
   for(let i = 1; i <= schemaAttributes.length; i++) {
     let iLengthClosures = closures.filter((closure)=>closure.leftSet.length == i);
     iLengthClosures.forEach((closure)=>{
-      closuresOutputString += printClosureToString(closure,maxSetLength) + '\r\n';
+      closuresOutputString += printClosureToString(closure,charsToEquals) + '\r\n';
     });
   }
   closuresOutputArea.value = closuresOutputString;
@@ -56,8 +58,11 @@ function displayClosuresAndKeys(closures,keys,schemaAttributes) {
   keysOutputArea.value = keysOutputString;
 }
 
-function printClosureToString(closure,maxSetLength) {
-  let numSpacesToEquals = (maxSetLength-closure.leftSet.length)*3;
+function printClosureToString(closure,charsToEquals) {
+  let leftSetLength = (closure.leftSet.length - 1) * 2 + 3;
+  closure.leftSet.forEach((att)=>leftSetLength+=att.length);
+
+  let numSpacesToEquals = charsToEquals-leftSetLength;
   let string = '';
   string += printSetToString(closure.leftSet);
   string += '\u207a'
