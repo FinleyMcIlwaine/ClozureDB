@@ -48,12 +48,23 @@ function setClosure(set,fds) {
     leftSet: set,
     rightSet: [...set]
   }
-  fds.forEach((dep)=>{
-    if (dep.leftAttributes.every(att => closure.rightSet.indexOf(att) > -1) 
-    && closure.rightSet.indexOf(dep.rightAttributes[0]) == -1) {
-      closure.rightSet.push(dep.rightAttributes[0]);
-    }
-  })
+
+  let oldLength = closure.rightSet.length;
+  let newLength = 0;
+
+  while (oldLength != newLength) {
+    oldLength = closure.rightSet.length;
+    fds.forEach((dep)=>{
+      if (dep.leftAttributes.every(att => closure.rightSet.indexOf(att) > -1)) {
+        dep.rightAttributes.forEach(rightAtt=>{
+          if (!closure.rightSet.includes(rightAtt)) {
+            closure.rightSet.push(rightAtt);
+          }
+        })
+      }
+    });
+    newLength = closure.rightSet.length;
+  }
   return closure;
 }
 
