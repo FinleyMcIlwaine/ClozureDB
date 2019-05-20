@@ -60,6 +60,9 @@ function validateInputFormat() {
       dependencyInput.setCustomValidity(err.msg);
       updateDependencyErrorMsg();
     }
+    else {
+      console.log("A deadly error has occured:\n" + err);
+    }
   }
 };
 

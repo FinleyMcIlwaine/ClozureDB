@@ -7,7 +7,7 @@
  */
 
 function generateClosuresAndKeys(schema,dependencies) {
-  let attributesSuperset = getPowerset(schema.attributes);
+  let attributesPowerset = getPowerset(schema.attributes);
   let closures = [];
 
   // Here we can get ahead in our calculations of keys
@@ -24,7 +24,7 @@ function generateClosuresAndKeys(schema,dependencies) {
   // Split FDs
   splitDependencies(dependencies);
   
-  attributesSuperset.forEach((set)=>{
+  attributesPowerset.forEach((set)=>{
     let closure = setClosure(set,dependencies.split);
     if (schema.attributes.every((att)=>closure.rightSet.indexOf(att) > -1)) {
       keys.super.push(closure.leftSet)
