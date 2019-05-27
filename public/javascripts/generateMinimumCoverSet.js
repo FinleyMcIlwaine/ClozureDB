@@ -5,7 +5,7 @@
  * @author Finley McIlwaine
  */
 
-function generateMinimumCoverSet(schema, dependencies) {
+function generateMinimumCoverSet(dependencies) {
   let fds = [ ...dependencies.split ],
       fd,
       testFds,
@@ -25,10 +25,15 @@ function generateMinimumCoverSet(schema, dependencies) {
     else newFds.push(fd);
   }
 
-  console.log(newFds);
-  return combineDependencies(newFds);
+  // Send combined minimum dependencies output to DOM
+  displayMinimumCoverSet(combineDependencies(newFds));
 }
 
+/**
+ * Minimizes the left hand side of FDs with more than one
+ * left-hand attribute.
+ * @param {*} functionalDs 
+ */
 function minimizeLeftHandSides(functionalDs) {
   let fds = [...functionalDs], newLHS, testLHS, testClosure, unnecessary;
   fds.forEach((fd,i)=>{
@@ -36,12 +41,20 @@ function minimizeLeftHandSides(functionalDs) {
     testLHS= [];
     testClosure = [];
     unnecessary = [];
+
+    // Do not worry about single-attribute left-hand sides
     if (fd.leftAttributes.length < 2) return;
+
     for (let j = 0; j < fd.leftAttributes.length; j++) {
+      // Remove attributes from test set if unnecessary or currently testing.
       testLHS = fd.leftAttributes.filter((att,k)=>{
         return k!=j && !(unnecessary.includes(k));
       });
+
+      // Compute new closure of the left-hand side
       testClosure = setClosure(testLHS,fds);
+
+      // If new closure contains RHS attributes, the fd is not necessary, else it is.
       if (testClosure.rightSet.includes(fd.rightAttributes[0])) unnecessary.push(j);
       else newLHS.push(fd.leftAttributes[j]);
     }
@@ -50,17 +63,10 @@ function minimizeLeftHandSides(functionalDs) {
   return fds;
 }
 
-// function getDependencyClosure(fds) {
-//   let masterClosure = [];
-//   fds.forEach(dep=>{
-//     let closure = setClosure(dep.leftAttributes,fds);
-//     closure.rightSet.forEach(att=>{
-//       if (!masterClosure.includes(att)) masterClosure.push(att);
-//     })
-//   })
-//   return masterClosure;
-// }
-
+/**
+ * Combines dependencies with common left-hand side attributes.
+ * @param {} fds 
+ */
 function combineDependencies(fds) {
   let newFds = [];
   fds.forEach(dep=>{
@@ -76,9 +82,3 @@ function combineDependencies(fds) {
   });
   return newFds;
 }
-
-// function arraysEqual(a,b) {
-//   return a.every(val=>{
-//     return b.includes(val);
-//   });
-// }
