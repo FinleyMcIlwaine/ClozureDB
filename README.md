@@ -10,7 +10,12 @@ This repository contains the source code for my web-based relational database de
 
 
 ## To-Do - in no particular order:
-- Continue updating README
+- ~~Calculate minimum canonical coverset.~~
+- Display minimum canonical cover set.
+- Calculate the complete set of non-trivial functional dependencies.
+- Display the complete set of non-trivial functional dependencies.
+- Calculate normal form information.
+- Display normal form information.
 - Make capabilites and functionality of site more prominent on home page.
-- Better documentation and modularization in closure algorithm.
+- ~~Better documentation and modularization in closure algorithm.~~
 - Get hosted!
